@@ -7,6 +7,9 @@ The setup script.
 from setuptools import setup
 from setuptools import find_packages
 
+# Import Cython after setuptools
+from Cython.Build import cythonize  # isort:skip
+
 def read_file(path):
     with open(path, "r") as f:
         return "\n".join([l.strip() for l in f.readlines()])
@@ -28,6 +31,7 @@ metadata = {
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Cython",
     ],
 }
 
@@ -47,6 +51,7 @@ setup(
     entry_points={"console_scripts": scripts},
     packages=find_packages("src"),
     package_dir={"": "src"},
+    ext_modules=cythonize("src/*/*.pyx", annotate=True),
     include_package_data=True,
     **metadata,
 )
