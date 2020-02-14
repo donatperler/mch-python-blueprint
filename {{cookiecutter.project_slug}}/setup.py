@@ -4,6 +4,7 @@
 The setup script.
 """
 
+import numpy
 from setuptools import setup
 from setuptools import find_packages
 
@@ -38,7 +39,9 @@ metadata = {
 python = ">=3.7"
 
 dependencies = [
-    "Click >= 6.0",
+    "cython",
+    "click >= 6.0",
+    "numpy",
 ]
 
 scripts = [
@@ -51,7 +54,8 @@ setup(
     entry_points={"console_scripts": scripts},
     packages=find_packages("src"),
     package_dir={"": "src"},
-    ext_modules=cythonize("src/*/*.pyx", annotate=True),
+    ext_modules=cythonize("src/**/*.pyx", annotate=True),
+    include_dirs=[numpy.get_include()],
     include_package_data=True,
     **metadata,
 )
