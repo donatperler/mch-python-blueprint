@@ -4,6 +4,6 @@
   "github_username": "{{ cookiecutter.full_name.lower().replace(' ', '') }}",
   "project_name": "{{ cookiecutter.full_name.split()[0] }}'s Cython Tool",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(\"'\", '').replace(' ', '_').replace('-', '_') }}",
-  "project_short_description": "{{ cookiecutter.full_name }}'s shiny new tool.",
+  "project_short_description": "{{ cookiecutter.full_name }}'s shiny new Cython tool.",
   "version": "0.1.0"
 }
